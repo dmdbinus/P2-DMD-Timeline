@@ -63,14 +63,14 @@ a, a:visited, h1 a:visited, a:active,
 	text-shadow:0 1px 0 #fff;
 	color: #575656;
 	letter-spacing:-1px;
-	margin:0 0 10px;
+	margin:10px 0;
 }
 
 #sidebar .widget ul li{
 	margin:0 0 3px;
 }
 
-.widget_p2_recent_comments img.avatar{
+#sidebar img.avatar{
     border:1px solid #AEAEAE;
     padding:1px;
     background:#fff;

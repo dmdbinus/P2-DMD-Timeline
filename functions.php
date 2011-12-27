@@ -1,5 +1,16 @@
 <?php
 
+// Add Template Stylesheet
+function p2_dmd_timeline_stylesheet(){
+    wp_register_style('p2-style', get_bloginfo('template_url') . '/style.css', array(), false, 'screen');
+    wp_enqueue_style('p2-style');    
+
+    wp_register_style('p2-dmd-timeline-style', get_bloginfo('stylesheet_url'), array(), false, 'screen');
+    wp_enqueue_style('p2-dmd-timeline-style');    
+
+}
+add_action('wp_head', 'p2_dmd_timeline_stylesheet', 1);
+
 // DMD Title
 function dmd_p2_title( $before = '<h2 class="title">', $after = '</h2>', $echo = true ) {
 	if ( is_page() )

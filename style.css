@@ -52,6 +52,10 @@ a, a:visited, h1 a:visited, a:active,
 	padding:0;
 }
 
+#sidebar a:hover{
+  color:#d54e21;
+}
+
 #sidebar .widget{
 	background:url(images/border.png) repeat-x bottom right;
 	padding:0 20px 15px;

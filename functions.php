@@ -150,7 +150,7 @@ class dmd_person_in_charge_widget extends WP_Widget{
 			foreach($pics as $pic){
 				echo '<tr>';
 				echo '<td class="avatar" style="height: 32px; width: 32px" title="'. $pic->cat_name .'">' . get_avatar($pic->description, 32) . '</td>';
-				echo '<td class="text"><a href="' . get_bloginfo('url') . '/person-in-charge/' . $pic->slug . '">' . $pic->cat_name . '</a></td>';
+				echo '<td class="text"><a href="' . get_bloginfo('url') . '/person-in-charge/' . $pic->slug . '">' . $pic->cat_name . ' (' . $pic->category_count . __(' Tasks', 'p2') . ')</a></td>';
 				echo '</tr>';
 			}		
 		echo '</table>';

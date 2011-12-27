@@ -1,0 +1,309 @@
+/*
+Theme Name:     P2 DMD Timeline
+Theme URI:      http: //dmd.binus.ac.id
+Description:    Child theme of P2 developed for DMD BINUS Timeline Site
+Author:         DMD BINUS University
+Author URI:     http://dmd.binus.ac.id
+Template:       p2
+Version:        1.0
+*/
+
+@import url("../p2/style.css");
+
+
+
+
+
+/* Global
+--------------------------------------------------------------
+-------------------------------------------------------------- */
+body, form *, #respond #cancel-comment-reply-link, input, textarea{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+a, a:visited, h1 a:visited, a:active,
+#main .selected .actions a, #main .selected .actions a:link, #main .selected .actions a:visited,
+#media-buttons a, #help dt{
+	color:#135581;
+}
+
+#post-types:after,
+.clearfix:after{
+    content:".";display:block; clear:both; visibility:hidden
+}
+
+
+
+
+/* Sidebar
+--------------------------------------------------------------
+-------------------------------------------------------------- */
+#wrapper{
+	background:url(images/dmd-sidebar-bg.png) top right;
+}
+
+#sidebar{
+	padding:0;
+	width:242px;
+        margin-left:-10px;
+}
+
+#sidebar ul li{
+	padding:0;
+}
+
+#sidebar .widget{
+	background:url(images/border.png) repeat-x bottom right;
+	padding:0 20px 15px;
+}
+
+#sidebar h2 {
+	font-size: 1.8em;
+	text-transform: uppercase;
+	text-shadow:0 1px 0 #fff;
+	color: #575656;
+	letter-spacing:-1px;
+	margin:0 0 10px;
+}
+
+#sidebar .widget ul li{
+	margin:0 0 3px;
+}
+
+.widget_p2_recent_comments img.avatar{
+    border:1px solid #AEAEAE;
+    padding:1px;
+    background:#fff;
+}
+
+/* Search Widget */
+#searchsubmit{
+    display:none;
+}
+
+#sidebar #s{
+    border:none;
+    width:170px; height:18px;
+    padding-right:30px;
+    background:url(images/searchbox.png) no-repeat;
+}
+
+#s:focus{
+    outline:0;
+}
+
+
+
+
+/* Main Body
+--------------------------------------------------------------
+-------------------------------------------------------------- */
+
+/* Post Box */
+#post-types{
+    margin:0;
+    height:auto;
+    float:left; width:100%;
+    text-transform:uppercase;
+}
+
+#post-types li{
+    float:left;
+    background:url(images/post-types-bg.png) repeat-x top left;
+    border:1px solid #D9D9D9;
+    border-left:none;
+}
+
+#post-types li:hover{
+    background:url(images/post-types-bg-hover.png) repeat-x top left;    
+}
+
+#post-types li:first-child{
+    border-left:1px solid #D9D9D9;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;    
+}
+
+#post-types li:last-child{
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;    
+}
+
+#post-types li a{
+    float:left;
+    font-size:12px;
+    margin:0;
+    border:none;
+    background:none;
+    border-radius:0;
+    text-shadow:0 1px 0 #fff;
+    color:#5E5E5E;
+}
+
+#post-types li a:hover{
+    color:#000;
+}
+
+#post-types li a.selected{
+    color:#000;
+}
+
+#new_post{
+    padding-bottom:30px;
+}
+
+#media-buttons {
+    margin: 0 0 7px 0;
+}
+
+#media-buttons a{
+    text-transform:uppercase;
+    font-size:11px;
+    line-height:1.2;
+}
+
+#postbox label{
+    display:none;
+}
+
+#postbox .avatar {
+    margin-top: 13px;
+}
+
+#wrapper #postbox input{
+    text-transform:uppercase;
+    color:#A6A5A5;
+}
+
+#postbox input#tags{
+    width:97.6%;
+    margin:0 0 10px;
+}
+
+#postbox input#submit{
+    line-height:0;
+    letter-spacing:-0.5px;
+    padding:0 10px 5px;
+    color:#4A4949;
+    background:#F3F3F3;
+    cursor:pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;    
+}
+
+#postbox input#submit:hover{
+    background:#E4E4E4;
+    color:#000;
+}
+
+/* Main Content Stream */
+#main .controls{
+    text-transform:uppercase;
+    font-size:11px;
+    position:relative;
+    text-align:right;
+    display:block;
+}
+
+.sleeve_main{
+    background:url(images/border-ver.png) repeat-y top right;
+    padding-right:2px;
+}
+
+#main .postcontent h2.title {
+    font-size: 1.7em;
+    margin:-5px 0 0;
+    line-height: 1.2;
+    border-bottom:none;
+    padding:0 0 5px;
+}
+
+#main .postcontent h2.title a:hover{
+    border-bottom:none;    
+}
+
+#postlist h4.dmd-p2-meta{
+    margin-top:-7px;
+    font-size: 13px;   
+}
+
+#main .dmd-content.actions{
+    position:relative;
+    text-align:right;
+    display:block;
+    font-size:11px;
+}
+
+
+
+
+
+/* Task Status */
+#wrapper,
+#main ul#postlist, #main .post ul{
+    overflow:visible;
+}
+
+.task-status{
+    height:34px;
+    margin:0 0 25px;
+    display:block;
+    position:relative;
+}
+
+.task-status .status{
+    float:left; margin-left:-21px;
+    text-transform:uppercase; font-size:18px;
+    height:30px; padding:1px;
+    color:#fff; background:#fff;
+    border:1px solid #CFCFCF;
+}
+
+.task-status .status span{
+    float:left;
+    background:#efefef;
+    padding:6px 15px 4px 15px;
+    height:20px;
+}
+
+.task-status .status.done span{
+    background:url(images/status-done.png) repeat-x top left;
+}
+
+.task-status .status.on-progress span{
+    background:url(images/status-on-progress.png) repeat-x top left;
+}
+
+.task-status .status.discontinued span{
+    background:url(images/status-discontinued.png) repeat-x top left;
+}
+
+.status-tail{
+    float:left;
+    width:6px; height:6px;
+    background:url(images/status-tail.png) no-repeat;
+    position:absolute;
+    left:-21px; bottom:-6px;
+}
+
+.person-in-charge{
+    float:left;
+    border:1px solid #CFCFCF;
+    padding:1px;
+    background:#fff;
+    margin:0 0 0 2px;
+}
+
+.person-in-charge .avatar{
+    border:none !important;
+    margin:0 !important;
+}

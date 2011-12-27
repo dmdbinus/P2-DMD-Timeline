@@ -112,8 +112,8 @@ function dmd_custom_taxonomies() {
 }
 
 // Add Person in Charge Widget
-add_action( 'widgets_init', 'dmd_person_in_charge' );
-function dmd_person_in_charge(){
+add_action( 'widgets_init', 'dmd_person_in_charge_widget_init' );
+function dmd_person_in_charge_widget_init(){
 	register_widget('dmd_person_in_charge_widget');
 }
 
@@ -186,6 +186,85 @@ class dmd_person_in_charge_widget extends WP_Widget{
 		<p>
 			<label for="<?php echo $this->get_field_id( 'dmd_person_in_charge_widgettitle' ); ?>"><?php _e('Title:', 'p2'); ?></label>
 			<input id="<?php echo $this->get_field_id( 'dmd_person_in_charge_widgettitle' ); ?>" name="<?php echo $this->get_field_name( 'dmd_person_in_charge_widgettitle' ); ?>" value="<?php echo $instance['dmd_person_in_charge_widgettitle']; ?>" class="widefat" />
+		</p>
+		
+	<?php
+	}
+}
+
+
+// Add Status Widget
+add_action( 'widgets_init', 'dmd_task_status_widget_init' );
+function dmd_task_status_widget_init(){
+	register_widget('dmd_task_status_widget');
+}
+
+class dmd_task_status_widget extends WP_Widget{
+	
+	// Widget Setup
+	function dmd_task_status_widget(){
+		// Widget Settings
+		$widget_ops = array('classname' => 'task-status-widget', 'description' => __('Task Status', 'p2'));
+		
+		// Widget Control Settings
+		$control_ops = array('width' => 300, 'height' => 350, 'id_base' => 'task-status-widget');
+		
+		//Create The Widget
+		$this->WP_Widget('task-status-widget', __('DMD - Task Status', 'p2'), $widget_ops, $control_ops);
+	}
+	
+	
+	// Front End Widget Interface
+	function widget( $args, $instance ) {
+		extract( $args );
+
+		// Our variables from the widget settings.
+		$task_status_widgettitle = $instance['dmd_task_status_widgettitle'];		
+
+		
+		/* Before widget (defined by themes). */
+		echo $before_widget;
+		
+		echo '<h2 class="widgettitle">'.$task_status_widgettitle .'</h2>';
+		
+		echo '<ul>';
+			$statuses = get_categories('taxonomy=status');
+			foreach($statuses as $status){
+				echo '<li><a href="' . get_bloginfo('url') . '/status/' . $status->slug . '">' . $status->cat_name . ' (' . $status->category_count . ')</a></li>';
+			}		
+		echo '</ul>';
+		
+		/* After widget (defined by themes). */
+		echo $after_widget;
+	}
+
+	// Update the widget settings.
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+
+		/* Strip tags for title and name to remove HTML (important for text inputs). */
+		$instance['dmd_task_status_widgettitle'] = strip_tags( $new_instance['dmd_task_status_widgettitle'] );
+
+		return $instance;
+	}
+
+	/**
+	 * Displays the widget settings controls on the widget panel.
+	 * Make use of the get_field_id() and get_field_name() function
+	 * when creating your form elements. This handles the confusing stuff.
+	 */
+	function form( $instance ) {
+
+		/* Set up some default widget settings. */
+		$defaults = array(
+				'dmd_task_status_widgettitle' => 'Task Status'
+				);
+		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+
+		<?php // Widget Title ?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'dmd_task_status_widgettitle' ); ?>"><?php _e('Title:', 'p2'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'dmd_task_status_widgettitle' ); ?>" name="<?php echo $this->get_field_name( 'dmd_task_status_widgettitle' ); ?>" value="<?php echo $instance['dmd_task_status_widgettitle']; ?>" class="widefat" />
 		</p>
 		
 	<?php

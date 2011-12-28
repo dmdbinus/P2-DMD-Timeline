@@ -94,6 +94,11 @@ a, a:visited, h1 a:visited, a:active,
     outline:0;
 }
 
+/* Person in Charge Widget */
+.p2-person-in-charge .avatar {
+	margin-right: 8px;
+	margin-bottom: 4px;
+}
 
 
 

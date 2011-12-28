@@ -156,7 +156,7 @@ class dmd_person_in_charge_widget extends WP_Widget{
 		
 		echo '<h2 class="widgettitle">'.$person_in_charge_widgettitle .'</h2>';
 		
-		echo '<table class="p2-recent-comments" cellspacing="0" cellpadding="0" border="0">';
+		echo '<table class="p2-person-in-charge" cellspacing="0" cellpadding="0" border="0">';
 			$pics = get_categories('taxonomy=person-in-charge');
 			foreach($pics as $pic){
 				echo '<tr>';

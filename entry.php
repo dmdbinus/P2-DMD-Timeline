@@ -64,7 +64,7 @@
 		</span>
 
 		<?php		
-		if ( 'status' == p2_get_the_category() || 'link' == p2_get_the_category() ) :
+		if ( 'link' == p2_get_the_category() ) :
 			dmd_p2_meta();
 			the_content( __( '(More ...)' , 'p2' ) );
 

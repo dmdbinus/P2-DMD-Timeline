@@ -281,3 +281,35 @@ class dmd_task_status_widget extends WP_Widget{
 	<?php
 	}
 }
+
+// Adding Custom Taxonomy into Dashboard Post Column
+add_filter("manage_edit-post_columns", "title_p2dmdtimeline_columns");
+add_action("manage_posts_custom_column", "p2dmdtimeline_columns");
+
+function title_p2dmdtimeline_columns($columns){
+	$columns = array(
+		"cb" => "<input type=\"checkbox\" />",
+                "title" => __("Title"),
+		"author" => __("Author"),
+                "categories" => __("Categories"),
+                "tags" => __("Tags"),
+		"status" => __("Status"),
+		"pic" => __("Person In Charge"),
+		"comments" => '<span class="vers"><img alt="' . esc_attr__( 'Comments' ) . '" src="' . esc_url( admin_url( 'images/comment-grey-bubble.png' ) ) . '" /></span>',
+		"date" => __('Date')
+	);
+	return $columns;	
+}
+
+function p2dmdtimeline_columns($column){
+	global $post;
+	switch($column){
+		case "status":
+			echo get_the_term_list( $post->ID, 'status', '', ', ' );
+		break;
+	
+		case "pic":
+			echo get_the_term_list( $post->ID, 'person-in-charge', '', ', ' );
+		break;
+	}
+}

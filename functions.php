@@ -161,7 +161,7 @@ class dmd_person_in_charge_widget extends WP_Widget{
 			foreach($pics as $pic){
 				echo '<tr>';
 				echo '<td class="avatar" style="height: 32px; width: 32px" title="'. $pic->cat_name .'">' . get_avatar($pic->description, 32) . '</td>';
-				echo '<td class="text"><a href="' . get_bloginfo('url') . '/person-in-charge/' . $pic->slug . '">' . $pic->cat_name . ' (' . $pic->category_count . __(' Tasks', 'p2') . ')</a></td>';
+				echo '<td class="text"><a href="' . get_bloginfo('url') . '/person-in-charge/' . $pic->slug . '">' . $pic->cat_name . ' (' . dmd_get_numbers_of_task_left_based_on_pic($pic->slug) . ')</a></td>';
 				echo '</tr>';
 			}		
 		echo '</table>';
@@ -312,4 +312,47 @@ function p2dmdtimeline_columns($column){
 			echo get_the_term_list( $post->ID, 'person-in-charge', '', ', ' );
 		break;
 	}
+}
+
+
+// Get numbers of on-progress tasks based on person in charge
+function dmd_get_numbers_of_task_left_based_on_pic($pic_slug){
+	global $post;
+	$args = array(
+		'posts_per_page' => -1,
+		'tax_query' => array(
+			'relation' => 'AND',
+			array(
+				'taxonomy' => 'status',
+				'field' => 'slug',
+				'terms' => get_term_by('name', 'On Progress', 'status')->slug
+			),
+			array(
+				'taxonomy' => 'person-in-charge',
+				'field' => 'slug',
+				'terms' => $pic_slug
+			)
+		)
+	);
+    
+	$the_query = new WP_Query( $args );    
+
+	while ( $the_query->have_posts() ) : $the_query->the_post();	
+		$ids[] .= get_the_ID();
+	endwhile;
+	
+	wp_reset_postdata();
+	
+	$amount_of_id = count($ids);
+	if ($amount_of_id == 0) {
+		$message = __('No task left', 'p2');
+		return $message;
+	} elseif ($amount_of_id < 2){
+		$message = $amount_of_id . __(' task left', 'p2');
+		return $message;
+	} else{
+		$message = $amount_of_id . __(' tasks left', 'p2');
+		return $message;		
+	}
+
 }
